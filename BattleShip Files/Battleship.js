@@ -56,6 +56,9 @@ var controller = {
     guesses:0,
 
     processGuess: function(guess){
-        
+
     }
+}
+function parseGuess(guess){
+    var alphabet = ["A","B","C","D","E","F","G"];
 }
