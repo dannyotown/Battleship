@@ -52,3 +52,10 @@ var model = {
         return true;
     }
 };
+var controller = {
+    guesses:0,
+
+    processGuess: function(guess){
+        
+    }
+}
