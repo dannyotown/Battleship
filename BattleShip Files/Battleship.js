@@ -1,4 +1,5 @@
-var view={
+var view =
+{
         displayMessage: function(msg)
         {
             var messageArea = document.getElementById("messageArea");
@@ -15,7 +16,8 @@ var view={
             cell.setAttribute("class", "miss");
         }
     };
-var model = {
+var model = 
+{
     boardSize: 7,
     numShips: 3,
     shipLength: 3,
@@ -63,9 +65,11 @@ var model = {
     generateShipLocations:function(){
         var locations;
         for (var i = 0; i < this.numShips; i++){
-            do{
+            do
+            {
                 locations = this.generateShip();
-            } while (this.collision(locations));
+            } 
+            while (this.collision(locations));
             this.ships[i].locations = locations;
         }
     },
@@ -73,7 +77,6 @@ var model = {
     {
 		var direction = Math.floor(Math.random() * 2);
 		var row, col;
-
         if (direction === 1) 
         { // horizontal
 			row = Math.floor(Math.random() * this.boardSize);
@@ -89,7 +92,8 @@ var model = {
             if (direction === 1) 
             {
 				newShipLocations.push(row + "" + (col + i));
-            } else 
+            } 
+            else 
             {
 				newShipLocations.push((row + i) + "" + col);
 			}
@@ -112,31 +116,6 @@ var model = {
 		return false;
 	}
 };
-function init()
-{
-    var fireButton = document.getElementById("fireButton");
-    fireButton.onclick = handleFireButton;
-    var fireButton = document.getElementById("guessInput");
-    guessInput.onkeypress = handleKeyPress;
-
-    model.generateShipLocations();
-}
-function handleKeyPress(e){
-    var fireButton = document.getElementById("fireButton");
-    if (e.keyCode === 13){
-        fireButton.click();
-        return false;
-    }
-}
-function handleFireButton()
-{
-var guessInput = document.getElementById("guessInput");
-var guess = guessInput.value;
-controller.processGuess(guess);
-guessInput.value = "";
-}
-window.onload = init;
-
 var controller = 
 {
     guesses:0,
@@ -181,3 +160,29 @@ function parseGuess(guess)
     }
     return null;
 }
+
+function init()
+{
+    var fireButton = document.getElementById("fireButton");
+    fireButton.onclick = handleFireButton;
+    var fireButton = document.getElementById("guessInput");
+    guessInput.onkeypress = handleKeyPress;
+
+    model.generateShipLocations();
+}
+function handleKeyPress(e){
+    var fireButton = document.getElementById("fireButton");
+    if (e.keyCode === 13)
+    {
+        fireButton.click();
+        return false;
+    }
+}
+function handleFireButton()
+{
+    var guessInput = document.getElementById("guessInput");
+    var guess = guessInput.value;
+    controller.processGuess(guess);
+    guessInput.value = "";
+}
+window.onload = init;
